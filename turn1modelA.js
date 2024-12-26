@@ -7,6 +7,7 @@ const pool = mysql.createPool({
     user: 'avnadmin',
     password: 'AVNS_ONJgzkx8UT3LQO3gLvK',
     database: 'turing',
+    port: 13889,
     connectionLimit: 10, // defines the maximum number of connection in pool.
 });
 
@@ -42,7 +43,7 @@ app.get('/data', (req, res) => {
         }
 
         // Mark as active connection
-        activeConnections.set(connectionId, { connection, idleTracker });
+        activeConnections.set(connectionId, {connection, idleTracker});
 
         // Example query
         connection.query('SELECT * FROM Users', (err, results) => {
